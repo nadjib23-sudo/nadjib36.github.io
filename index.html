@@ -3,164 +3,229 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>JAILBREAK PS4</title>
+<title>NADJIB 36</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg-main: #07090e;
-    --bg-card: rgba(18, 24, 38, 0.75);
-    --border-color: rgba(255, 255, 255, 0.08);
-    --text-primary: #f0f4f8;
-    --text-muted: #8a99ad;
-    --accent-blue: #00d2ff;
-    --color-ok: #20e070;
-    --color-bad: #ff5252;
-    --color-warn: #ffb300;
-  }
-
-  * { box-sizing: border-box; }
-
-  html, body { 
+  * { 
     margin: 0; 
     padding: 0; 
-    background: var(--bg-main); 
-    color: var(--text-primary);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    min-height: 100vh;
+    box-sizing: border-box; 
+  }
+  
+  html, body { 
+    width: 100%;
+    height: 100vh;
+    max-width: 100vw;
+    overflow-x: hidden;
+    background: #0a0a0b; 
+    color: #c8ced8;
+    font-family: 'Archivo', system-ui, sans-serif;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+  }
+  a:hover {
+    color: #fff;
+  }
+
+  .hero-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 720px;
+    overflow: hidden;
+    background: #0a0a0b;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    background-image: 
-      radial-gradient(circle at 50% 20%, rgba(0, 210, 255, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(112, 0, 255, 0.05) 0%, transparent 40%);
   }
 
-  .container {
-    width: 90%;
-    max-width: 480px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(12px);
-    overflow: hidden;
-    animation: fadeIn 0.4s ease-out;
+  /* VIDEO BACKGROUND */
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 60%;
+    pointer-events: none;
+    z-index: 1;
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+  /* OVERLAY GRADIENT */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(8,8,10,0.55) 0%, rgba(8,8,10,0.15) 30%, rgba(8,8,10,0.25) 55%, rgba(8,8,10,0.92) 100%);
+    pointer-events: none;
+    z-index: 2;
   }
 
+  /* BRAND HEADER */
   #brand { 
+    position: relative;
+    z-index: 3;
+    text-align: center; 
+    padding: 16px 24px; 
+    margin-top: 20px;
+    background: rgba(14, 17, 22, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 12px;
-    padding: 20px 16px; 
-    background: rgba(255, 255, 255, 0.02);
-    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   }
 
   #brand img { 
-    width: 38px; 
-    height: 38px; 
+    width: 32px; 
+    height: 32px; 
     border-radius: 50%;
-    border: 2px solid var(--accent-blue);
-    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+    vertical-align: middle; 
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   #brand b { 
-    font-size: 18px; 
-    font-weight: 800; 
-    letter-spacing: 0.2em;
-    color: #ffffff;
-    text-transform: uppercase;
-    background: linear-gradient(90deg, #ffffff, var(--text-muted));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 16px; 
+    font-weight: 700; 
+    letter-spacing: 0.16em;
+    color: #e6ebf2; 
+    vertical-align: middle; 
   }
 
+  /* UI CARD WRAPPER */
   #wrap { 
-    padding: 28px 24px; 
+    position: relative;
+    z-index: 3;
+    padding: 32px; 
+    margin-bottom: 50px;
+    background: rgba(10, 10, 11, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     text-align: center;
+    width: 90%;
+    max-width: 460px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
   }
 
   #state { 
-    font-size: 20px; 
-    font-weight: 700; 
-    margin: 0 0 12px;
-    letter-spacing: 0.02em;
-    min-height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    font-size: 24px; 
+    font-weight: 800; 
+    margin: 0 0 12px; 
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
   }
 
   #det { 
     font-size: 14px; 
-    color: var(--text-muted); 
-    margin: 0 0 16px;
+    color: #a0aab8; 
+    margin: 0 0 12px; 
+    padding: 8px 12px;
     background: rgba(255, 255, 255, 0.03);
-    padding: 8px 14px;
     border-radius: 8px;
     display: inline-block;
-    border: 1px solid rgba(255, 255, 255, 0.04);
   }
 
   #det b { 
-    color: var(--text-primary); 
+    color: #ffffff; 
     font-weight: 600; 
   }
 
   #cache { 
     font-size: 13px; 
-    color: var(--text-muted); 
+    color: #717d8d; 
     margin: 0; 
-    min-height: 20px;
+    min-height: 18px; 
     font-weight: 500;
   }
 
-  /* ألوان الحالات */
-  #cache.cacheok, .ok { color: var(--color-ok); }
-  .bad { color: var(--color-bad); }
-  .warn { color: var(--color-warn); }
-
-  /* تأثير أضواء نبضية للحالة */
-  .status-pulse {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    display: inline-block;
-    background-color: currentColor;
-    box-shadow: 0 0 8px currentColor;
-    animation: pulse 1.5s infinite;
-  }
-
-  @keyframes pulse {
-    0% { opacity: 0.4; }
-    50% { opacity: 1; }
-    100% { opacity: 0.4; }
-  }
+  #cache.cacheok, .ok { color: #7fd0a0; } 
+  .bad { color: #ff6b6b; } 
+  .warn { color: #ffd166; }
 </style>
 </head>
 <body>
 
-<div class="container">
+<div class="hero-container">
+  <!-- BACKGROUND VIDEO -->
+  <video id="bgVideo" class="hero-video" autoplay muted loop playsinline preload="auto">
+    <source src="https://cdn.sceneai.art/Hero%20section%20video%20file%20(2)/37091057-3719-4207-815c-745ebf57aeb4.mp4" type="video/mp4">
+  </video>
+
+  <!-- OVERLAY GRADIENT -->
+  <div class="hero-overlay"></div>
+
+  <!-- BRAND -->
   <div id="brand">
-    <img src="data:image/png;base64,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" alt="" width="38" height="38">
-    <b>NADJIB DEV</b>
+    <img src="data:image/png;base64,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" alt="" width="28" height="28">
+    <b>RAW GAME</b>
   </div>
 
+  <!-- CONTENT WRAPPER -->
   <div id="wrap">
-    <div id="state"><span class="status-pulse"></span> detecting firmware...</div>
+    <div id="state">detecting firmware...</div>
     <div id="det"></div>
     <div id="cache"></div>
   </div>
 </div>
 
 <script>
+// Continuous Video Playback Enforcer
+(function() {
+  var video = document.getElementById("bgVideo");
+  if (!video) return;
+
+  function safePlay() {
+    var promise = video.play();
+    if (promise !== undefined) {
+      promise.catch(function() {
+        // Swallow rejection errors silently
+      });
+    }
+  }
+
+  // Initial attempt
+  safePlay();
+
+  // Event driven playback safety
+  var events = ["pause", "ended", "loadedmetadata", "canplay"];
+  events.forEach(function(evt) {
+    video.addEventListener(evt, safePlay, false);
+  });
+
+  // Resume on tab refocus
+  document.addEventListener("visibilitychange", function() {
+    if (!document.hidden) {
+      safePlay();
+    }
+  }, false);
+
+  // Watchdog interval (runs every 1 second)
+  var intervalId = setInterval(function() {
+    if (video.paused) {
+      safePlay();
+    }
+  }, 1000);
+
+  // Clean up on unload (if applicable)
+  window.addEventListener("unload", function() {
+    clearInterval(intervalId);
+  });
+})();
+
+// Original Jailbreak Logic
 (function () {
     var stateEl = document.getElementById("state");
     var detEl = document.getElementById("det");
